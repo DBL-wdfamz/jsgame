@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>123</title>
+<style>
+    body
+    {
+        background-color: #4F4F4F;
+    }
+    *
+    {
+        padding: 0;
+        margin: 0;
+    }
+    #player1
+    {
+        width: 30px;
+        height: 50px;
+        background-color: black;
+        position: absolute;
+        left:900px;
+        top:500px;
+        border-radius:7px;
+        transform:rotate(0deg);
+    }
+    #player2
+    {
+        width: 30px;
+        height: 50px;
+        background-color: white;
+        position: absolute;
+        left:470px;
+        top:500px;
+        border-radius:7px;
+       transform:rotate(0deg);
+    }
+    #wea1
+    {
+        width: 80px;
+        height: 5px;
+        background-color: #551A8B;
+        position: absolute;
+        left:500px;
+        top:200px;
+        border-radius:7px;
+        transform:rotate(0deg);
+    }
+    #wea2
+    {
+        width: 80px;
+        height: 5px;
+        background-color: #B0E2FF;
+        position: absolute;
+        left:500px;
+        top:200px;
+        border-radius:7px;
+       transform:rotate(0deg);
+    }
+    #map
+    {
+        width: 730px;
+        height: 520px;
+        background-color: #7a7a7a;
+        position: absolute;
+        left:350px;
+        top:30px;
+    }
+    #displace1
+    {
+        width: 28px;
+        height: 48px;
+        border: 2px solid black;
+        position: absolute;
+        left:500px;
+        top:200px;
+        border-radius:7px;
+        display:none;
+        opacity:0.0;
+    }
+    #displace2
+    {
+        width: 28px;
+        height: 48px;
+        border: 2px solid white;
+        position: absolute;
+        left:500px;
+        top:200px;
+        border-radius:7px;
+        display:none;
+        opacity:0.0;
+    }
+    #blood1_
+    {
+        width: 338px;
+        height: 24px;
+        border: 2px solid black;
+        position: absolute;
+        left:360px;
+        top:50px;
+        border-radius:7px;
+    }
+    #blood2_
+    {
+        width: 338px;
+        height: 24px;
+        border: 2px solid white;
+        position: absolute;
+        left:720px;
+        top:50px;
+        border-radius:7px;
+    }
+    #blood1
+    {
+        width: 340px;
+        height: 24px;
+        background-color: black;
+        position: absolute;
+        left:361px;
+        top:52px;
+        border-radius:6px;
+    }
+    #blood2
+    {
+        width: 340px;
+        height: 24px;
+        background-color: white;
+        position: absolute;
+        left:721px;
+        top:52px;
+        border-radius:6px;
+    }
+    #moon
+    {
+        width: 80px;
+        height: 80px;
+        background-color: #faffcc;
+        position: absolute;
+        left:820px;
+        top:100px;
+        border-radius:40px;
+    }
+    #moon_d
+    {
+        width: 80px;
+        height: 80px;
+        background-color: #7a7a7a;
+        position: absolute;
+        left:800px;
+        top:120px;
+        border-radius:40px;
+    }
+    .building
+    {
+        position: absolute;
+        border-radius: 12px 12px 0px 0px;
+    }
+    .a { background-color: #5e5e5e; width: 130px; height: 130px; left: 370px; top: 420px;}
+    .b { background-color: #999999; width: 100px; height: 250px; left: 460px; top: 300px;}
+    .c { background-color: #292929; width: 110px; height: 150px; left: 600px; top: 400px;}
+    .d { background-color: #292929; width: 200px; height:  70px; left: 650px; top: 480px;}
+    .e { background-color: #5e5e5e; width:  80px; height: 300px; left: 700px; top: 250px;}
+    .f { background-color: #999999; width: 100px; height: 100px; left: 870px; top: 450px;}
+    .g { background-color: #5e5e5e; width:  80px; height: 350px; left: 950px; top: 200px;}
+    .h { background-color: #474747; width: 120px; height: 400px; left: 500px; top: 150px;}
+    .i { background-color: #5e5e5e; width:  80px; height: 100px; left: 580px; top: 450px;}
+
+    .key
+    {
+        position: absolute;
+        border-radius: 10px 10px 10px 10px;
+    }
+    .A { background-color: white; width: 40px; height: 40px; left: 300px; top: 620px;}
+    .S { background-color: white; width: 40px; height: 40px; left: 350px; top: 620px;}
+    .S1 { background-color: white; width: 40px; height: 40px; left: 1350px; top: 620px;}
+    .D { background-color: white; width: 40px; height: 40px; left: 400px; top: 620px;}
+    .W { background-color: white; width: 40px; height: 40px; left: 350px; top: 570px;}
+    .B { background-color: white; width: 40px; height: 40px; left: 550px; top: 620px;}
+    .B1 { background-color: white; width: 40px; height: 40px; left: 1450px; top: 570px;}
+    .B2 { background-color: white; width: 40px; height: 40px; left: 1450px; top: 620px;}
+    .N { background-color: white; width: 40px; height: 40px; left: 750px; top: 620px;}
+    .M { background-color: white; width: 40px; height: 40px; left: 950px; top: 620px;}
+    .M1 { background-color: white; width: 40px; height: 40px; left: 1350px; top: 570px;}
+    .H { background-color: white; width: 40px; height: 40px; left: 1150px; top: 570px;}
+    .J { background-color: white; width: 40px; height: 40px; left: 1150px; top: 620px;}
+
+    .left { background-color: black; width: 40px; height: 40px; left: 300px; top: 750px;}
+    .down { background-color: black; width: 40px; height: 40px; left: 350px; top: 750px;}
+    .down1 { background-color: black; width: 40px; height: 40px; left: 1350px; top: 750px;}
+    .right { background-color: black; width: 40px; height: 40px; left: 400px; top: 750px;}
+    .up { background-color: black; width: 40px; height: 40px; left: 350px; top: 700px;}
+    .one { background-color: black; width: 40px; height: 40px; left: 550px; top: 750px;}
+    .one1 { background-color: black; width: 40px; height: 40px; left: 1450px; top: 700px;}
+    .one2 { background-color: black; width: 40px; height: 40px; left: 1450px; top: 750px;}
+    .two { background-color: black; width: 40px; height: 40px; left: 750px; top: 750px;}
+    .three { background-color: black; width: 40px; height: 40px; left: 950px; top: 750px;}
+    .three1 { background-color: black; width: 40px; height: 40px; left: 1350px; top: 700px;}
+    .four { background-color: black; width: 40px; height: 40px; left: 1150px; top: 700px;}
+    .five { background-color: black; width: 40px; height: 40px; left: 1150px; top: 750px;}
+
+    #msgW { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 358px; top: 574px; }
+    #msgA { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 308px; top: 624px; }
+    #msgS { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 358px; top: 624px; }
+    #msgS1 { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 1358px; top: 624px; }
+    #msgD { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 408px; top: 624px; }
+    #msgB { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 558px; top: 624px; }
+    #msgB1 { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 1458px; top: 624px; }
+    #msgB2 { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 1458px; top: 574px; }
+    #msgN { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 758px; top: 624px; }
+    #msgM { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 958px; top: 624px; }
+    #msgM1 { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 1358px; top: 574px; }
+    #msgH { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 1158px; top: 574px; }
+    #msgJ { position: absolute;color: #4F4F4F;font-size:25px;font-weight: bold;left: 1158px; top: 624px; }
+    #add1 { position: absolute;color: white;font-size:25px;font-weight: bold;left: 1410px; top: 624px; }
+    #add2 { position: absolute;color: white;font-size:25px;font-weight: bold;left: 1410px; top: 574px; }
+
+    #msgUP { position: absolute;color: #CFCFCF;font-size:12px;font-weight: bold;left: 362px; top: 710px; }
+    #msgLEFT { position: absolute;color: #CFCFCF;font-size:12px;font-weight: bold;left: 306px; top: 760px; }
+    #msgDOWN { position: absolute;color: #CFCFCF;font-size:12px;font-weight: bold;left: 351px; top: 760px; }
+    #msgDOWN1 { position: absolute;color: #CFCFCF;font-size:12px;font-weight: bold;left: 1351px; top: 760px; }
+    #msgRIGHT { position: absolute;color: #CFCFCF;font-size:12px;font-weight: bold;left: 401px; top: 760px; }
+    #msg1 { position: absolute;color: #CFCFCF;font-size:25px;font-weight: bold;left: 558px; top: 754px; }
+    #msg11 { position: absolute;color: #CFCFCF;font-size:25px;font-weight: bold;left: 1458px; top: 754px; }
+    #msg12 { position: absolute;color: #CFCFCF;font-size:25px;font-weight: bold;left: 1458px; top: 704px; }
+    #msg2 { position: absolute;color: #CFCFCF;font-size:25px;font-weight: bold;left: 758px; top: 754px; }
+    #msg3 { position: absolute;color: #CFCFCF;font-size:25px;font-weight: bold;left: 958px; top: 754px; }
+    #msg31 { position: absolute;color: #CFCFCF;font-size:25px;font-weight: bold;left: 1358px; top: 704px; }
+    #msg4 { position: absolute;color: #CFCFCF;font-size:25px;font-weight: bold;left: 1158px; top: 704px; }
+    #msg5 { position: absolute;color: #CFCFCF;font-size:25px;font-weight: bold;left: 1158px; top: 754px; }
+    #add3 { position: absolute;color: black;font-size:25px;font-weight: bold;left: 1410px; top: 704px; }
+    #add4 { position: absolute;color: black;font-size:25px;font-weight: bold;left: 1410px; top: 754px; }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div class="building a"></div>
+<div class="building h"></div>
+<div class="building b"></div>
+<div class="building c"></div>
+<div class="building d"></div>
+<div class="building e"></div>
+<div class="building f"></div>
+<div class="building g"></div>
+<div class="building i"></div>
+
+<div class="key W"></div>
+<div class="key S"></div>
+<div class="key S1"></div>
+<div class="key A"></div>
+<div class="key D"></div>
+<div class="key B"></div>
+<div class="key B1"></div>
+<div class="key B2"></div>
+<div class="key N"></div>
+<div class="key M"></div>
+<div class="key M1"></div>
+<div class="key H"></div>
+<div class="key J"></div>
+<div class="key left"></div>
+<div class="key right"></div>
+<div class="key up"></div>
+<div class="key down"></div>
+<div class="key down1"></div>
+<div class="key one"></div>
+<div class="key one1"></div>
+<div class="key one2"></div>
+<div class="key two"></div>
+<div class="key three"></div>
+<div class="key three1"></div>
+<div class="key four"></div>
+<div class="key five"></div>
+
+<p id="msgW">W</p>
+<p id="msgS">S</p>
+<p id="msgS1">S</p>
+<p id="msgA">A</p>
+<p id="msgD">D</p>
+<p id="msgB">B</p>
+<p id="msgB1">B</p>
+<p id="msgB2">B</p>
+<p id="msgN">N</p>
+<p id="msgM">M</p>
+<p id="msgM1">M</p>
+<p id="msgH">H</p>
+<p id="msgJ">J</p>
+<p id="add1">+</p>
+<p id="add2">+</p>
+
+<p id="msgUP">UP</p>
+<p id="msgDOWN">DOWN</p>
+<p id="msgDOWN1">DOWN</p>
+<p id="msgLEFT">LEFT</p>
+<p id="msgRIGHT">RIGHT</p>
+<p id="msg1">1</p>
+<p id="msg11">1</p>
+<p id="msg12">1</p>
+<p id="msg2">2</p>
+<p id="msg3">3</p>
+<p id="msg31">3</p>
+<p id="msg4">4</p>
+<p id="msg5">5</p>
+<p id="add3">+</p>
+<p id="add4">+</p>
+
+<div id="moon"></div>
+<div id="moon_d"></div>
+
+<div id="player1"></div>
+<div id="wea1"></div>
+<div id="displace1"></div>
+<div id="blood1_"></div>
+<div id="blood1"></div>
+
+<div id="player2"></div>
+<div id="wea2"></div>
+<div id="displace2"></div>
+<div id="blood2_"></div>
+<div id="blood2"></div>
+
+<script>
+    var pl1 = document.getElementById("player1");
+    var pl2 = document.getElementById("player2");
+    var wea1 = document.getElementById("wea1");
+    var wea2 = document.getElementById("wea2");
+    var displace1 = document.getElementById("displace1");
+    var displace2 = document.getElementById("displace2");
+    var bloodsub1 = document.getElementById("blood1");
+    var bloodsub2 = document.getElementById("blood2");
+    var keys = new Array();
+    var timer = null,t = 50;
+    var speed1 = [0,0],jumpNum1 = 0,jumpMark1 = 0,jumpFlag1 = true,dire1 = "L",
+        runMark1 = 0,runFlag1 = true,sttMark1 = 0,sttFlag1 = true,defenFlag1 = true,
+        defenMark1 = 0,blood1 = 1000,wea_po1 = [-30,10],diFlag1 = true,diMark1 = 0,turnMark1 = 0,turnMark1_ = 0;
+        throwMark1 = false,throwplace1 = [0,0],throwstep1 = 0,throwweapo1 = 0;
+    var speed2 = [0,0],jumpNum2 = 0,jumpMark2 = 0,jumpFlag2 = true,dire2 = "R",
+        runMark2 = 0,runFlag2 = true,sttMark2 = 0,sttFlag2 = true,defenFlag2 = true,
+        defenMark2 = 0,blood2 = 1000,wea_po2 = [-30,10],diFlag2 = true,diMark2 = 0,turnMark2 = 0,turnMark2_ = 0;
+        throwMark2 = false,throwplace2 = [0,0],throwstep2 = 0,throwweapo2 = 0;
+
+    window.onkeydown = function (e) {
+        keys[e.keyCode]=true;
+    }
+
+    window.onkeyup = function (e) {
+        keys[e.keyCode]=false;
+
+        if (e.keyCode==38) {jumpFlag1=true;}
+        if (e.keyCode==99) {runFlag1=true;}
+        if (e.keyCode==98) {defenFlag1=true;}
+        if (e.keyCode==97) {sttFlag1=true;}
+
+        if (e.keyCode==87) {jumpFlag2=true;}
+        if (e.keyCode==77) {runFlag2=true;}
+        if (e.keyCode==78) {defenFlag2=true;}
+        if (e.keyCode==66) {sttFlag2=true;}
+    }
+
+
+
+    timer = setInterval(function () {
+        if (speed1[0]>0 && t%2==0) { speed1[0] -= 4; }
+        if (speed1[0]<0 && t%2==0) { speed1[0] += 4; }
+        if (speed1[0]>-4 && speed1[0]<4) { speed1[0] = 0; }
+        if (speed1[1]<10 && t%3==0) { speed1[1] += 2; }
+
+        if (keys[37] && speed1[0]>=-6) {
+            if (dire1=="R") { turnMark1 = t; }
+            speed1[0] -= 4;dire1 = "L";
+        }
+        if (keys[38] && jumpNum1<2 && jumpMark1+30<=t && jumpFlag1==true) { speed1[1] = -16;jumpNum1 += 1;jumpMark1 = t;jumpFlag1 = false; }
+        if (keys[39] && speed1[0]<=6) {
+            if (dire1=="L") { turnMark1 = t; }
+            speed1[0] += 4;dire1 = "R";
+        }
+        if (keys[40] && speed1[1]<=8) { speed1[1] += 2; }
+        if (keys[98] && defenMark1+50<=t && defenFlag1==true) { defenMark1 = t;defenFlag1 = false; }
+        if (keys[100] && diMark1+200<=t) {
+            diMark1 = t;
+            diFlag1 = false;
+            displace1.style.display = "block";
+            displace1.style.left = pl1.offsetLeft + 'px';
+            displace1.style.top = pl1.offsetTop + 'px';
+        }
+        if (keys[101] && diMark1+70<=t && diFlag1==false) {
+            diMark1 = t;
+            diFlag1 = true;
+            pl1.style.left = displace1.offsetLeft + 'px';
+            pl1.style.top = displace1.offsetTop + 'px';
+            speed1[0] = 0;
+            speed1[1] = 0;
+            displace1.style.display = "none";
+        }
+        if (diFlag1==false) { displace1.style.opacity = (t-diMark1)/70; }
+        if (keys[99] && runFlag1==true && runMark1+70<=t) {
+            runFlag1 = false;
+            runMark1 = t;
+            if (dire1 == "L") {
+                pl1.style.transform = "rotate(160deg)";
+                speed1[0] = -26;
+            }
+            else {
+                pl1.style.transform = "rotate(20deg)";
+                speed1[0] = 26;
+            }
+        }
+        else if(runMark1+50<=t) {
+            pl1.style.transform = "rotate(0deg)";
+        }
+        if (keys[97] && sttFlag1==true && sttMark1+30<=t) {
+            sttFlag1 = false;
+            sttMark1 = t;
+        }
+
+        if (dire1 == "L") {
+            wea_po1[0] = -30;
+            wea_po1[1] = 10;
+            wea1.style.transform = "rotate(10deg)";
+            wea1.style.width = "80px";
+
+            if (sttMark1+30>t && turnMark1+30>t && turnMark1_+30<=t) { turnMark1_ = t; }
+            if (keys[40] && sttMark1+30>t && throwMark1==false) {
+                throwMark1 = true;
+                throwplace1[0] = pl1.offsetLeft;
+                throwplace1[1] = pl1.offsetTop;
+                throwstep1 = -8;
+                throwweapo1 = -38;
+            }
+
+            if (throwMark1==true) {
+                throwweapo1 += throwstep1;
+                wea1.style.transform = "rotate("+String(t*10%180)+"deg)";
+                if (throwplace1[0]+throwweapo1<=300 || throwplace1[0]+throwweapo1>=1050) { throwstep1 = -throwstep1; }
+                if (throwweapo1==-30) { throwMark1 = false; }
+                if(throwstep1<0 && ((throwplace1[0]+throwweapo1-70<=pl2.offsetLeft && pl2.offsetLeft<=throwplace1[0]+throwweapo1) && (throwplace1[1]-40<=pl2.offsetTop && pl2.offsetTop<=throwplace1[1]+60))) {
+                    if (defenMark2+30<=t || dire2 == "L") {
+                        speed2[0] = -7;
+                        speed2[1] = -2;
+                        blood2 -= 4;
+                    }
+                    else {
+                        throwstep1 = -throwstep1;
+                    }
+                }
+                else if(throwstep1>0 && ((throwplace1[0]+throwweapo1+70>=pl2.offsetLeft && pl2.offsetLeft>=throwplace1[0]+throwweapo1) && (throwplace1[1]-40<=pl2.offsetTop && pl2.offsetTop<=throwplace1[1]+60))) {
+                    if (defenMark2+30<=t || dire2 == "R") {
+                        speed2[0] = 7;
+                        speed2[1] = -2;
+                        blood2 -= 4;
+                    }
+                    else {
+                        throwstep1 = -throwstep1;
+                    }
+                }
+            }
+            else if (sttMark1+30>t && runMark1+50>t) {
+                if((pl1.offsetLeft-70<=pl2.offsetLeft && pl2.offsetLeft<=pl1.offsetLeft) && (pl1.offsetTop-40<=pl2.offsetTop && pl2.offsetTop<=pl1.offsetTop+60)) {
+                    if (defenMark2+30>t && dire2 == "R") {
+                        speed1[0] = 8;
+                        blood1 -= 2;
+                    }
+                    else {
+                        speed2[0] = -14;
+                        speed2[1] = -4;
+                        blood2 -= 5;
+                    }
+                }
+                wea1.style.transform = "rotate("+String(175+(175+20)*(t-sttMark1)/15)+"deg)";
+                wea1.style.width = String(80+(120-80)*(t-sttMark1)/20)+"px";
+                wea_po1[0] = -5+(-70+5)*(t-sttMark1)/20;
+                wea_po1[1] = -5+(10+5)*(t-sttMark1)/20;
+            }
+            else if (turnMark1_+30>t) {
+                if (turnMark1_+20>t) {
+                    wea_po1[0] = -45+50*(t-turnMark1_)/20;
+                    wea_po1[1] = 10-30*(t-turnMark1_)/20;
+                    wea1.style.transform = "rotate("+String(20+120*(t-turnMark1_)/20)+"deg)";
+                }
+                else {
+                    wea_po1[0] = -15-70*(t-turnMark1_-20)/10;
+                    wea_po1[1] = 10+20*(t-turnMark1_-20)/10;
+                    wea1.style.transform = "rotate("+String(40-50*(t-turnMark1_-20)/10)+"deg)";
+                    wea1.style.width = String(80+30*(t-turnMark1_-20)/10)+"px";
+                    if((pl1.offsetLeft-90<=pl2.offsetLeft && pl2.offsetLeft<=pl1.offsetLeft) && (pl1.offsetTop-40<=pl2.offsetTop && pl2.offsetTop<=pl1.offsetTop+60)) {
+                        if (defenMark2+30>t && dire2 == "R") {
+                            speed1[0] = 8;
+                            blood1 -= 2;
+                        }
+                        else {
+                            speed2[0] = -14;
+                            blood2 -= 8;
+                        }
+                    }
+                }
+            }
+            else if (sttMark1+30>t) {
+                if (sttMark1+20>t) {
+                    wea_po1[0] = -45+30*(t-sttMark1)/20;
+                    wea1.style.transform = "rotate("+String(20-30*(t-sttMark1)/20)+"deg)";
+                }
+                else {
+                    wea_po1[0] = -15-70*(t-sttMark1-20)/10;
+                    wea1.style.transform = "rotate(0deg)";
+                    if((pl1.offsetLeft-70<=pl2.offsetLeft && pl2.offsetLeft<=pl1.offsetLeft) && (pl1.offsetTop-40<=pl2.offsetTop && pl2.offsetTop<=pl1.offsetTop+60)) {
+                        if (defenMark2+30>t && dire2 == "R") {
+                            speed1[0] = 8;
+                            blood1 -= 2;
+                        }
+                        else {
+                            speed2[0] = -14;
+                            blood2 -= 5;
+                        }
+                    }
+                }
+            }
+            else if (defenMark1+30>t) {
+                wea1.style.transform = "rotate(95deg)";
+                wea_po1[0] = -45;
+            }
+
+        }
+        else if (dire1 == "R") {
+            wea_po1[0] = -17;
+            wea_po1[1] = 10;
+            wea1.style.transform = "rotate(170deg)";
+            wea1.style.width = "80px";
+
+            if (sttMark1+30>t && turnMark1+30>t && turnMark1_+30<=t) { turnMark1_ = t; }
+            if (keys[40] && sttMark1+30>t && throwMark1==false) {
+                throwMark1 = true;
+                throwplace1[0] = pl1.offsetLeft;
+                throwplace1[1] = pl1.offsetTop;
+                throwstep1 = 8;
+                throwweapo1 = -22;
+            }
+
+            if (throwMark1==true) {
+                throwweapo1 += throwstep1;
+                wea1.style.transform = "rotate("+String(t*10%180)+"deg)";
+                if (throwplace1[0]+throwweapo1<=300 || throwplace1[0]+throwweapo1>=1050) { throwstep1 = -throwstep1; }
+                if (throwweapo1==-30) { throwMark1 = false; }
+                if(throwstep1<0 && ((throwplace1[0]+throwweapo1-70<=pl2.offsetLeft && pl2.offsetLeft<=throwplace1[0]+throwweapo1) && (throwplace1[1]-40<=pl2.offsetTop && pl2.offsetTop<=throwplace1[1]+60))) {
+                    if (defenMark2+30<=t || dire2 == "L") {
+                        speed2[0] = -7;
+                        speed2[1] = -2;
+                        blood2 -= 4;
+                    }
+                    else {
+                        throwstep1 = -throwstep1;
+                    }
+                }
+                else if(throwstep1>0 && ((throwplace1[0]+throwweapo1+70>=pl2.offsetLeft && pl2.offsetLeft>=throwplace1[0]+throwweapo1) && (throwplace1[1]-40<=pl2.offsetTop && pl2.offsetTop<=throwplace1[1]+60))) {
+                    if (defenMark2+30<=t || dire2 == "R") {
+                        speed2[0] = 7;
+                        speed2[1] = -2;
+                        blood2 -= 4;
+                    }
+                    else {
+                        throwstep1 = -throwstep1;
+                    }
+                }
+            }
+            else if (sttMark1+30>t && runMark1+50>t) {
+                if((pl1.offsetLeft+70>=pl2.offsetLeft && pl2.offsetLeft>=pl1.offsetLeft) && (pl1.offsetTop-40<=pl2.offsetTop && pl2.offsetTop<=pl1.offsetTop+60)) {
+                    if (defenMark2+30>t && dire2 == "L") {
+                        speed1[0] = -8;
+                        blood1 -= 2;
+                    }
+                    else {
+                        speed2[0] = 14;
+                        speed2[1] = -4;
+                        blood2 -= 5;
+                    }
+                }
+                wea1.style.transform = "rotate("+String(15-(175+20)*(t-sttMark1)/15)+"deg)";
+                wea1.style.width = String(80+(120-80)*(t-sttMark1)/20)+"px";
+                wea_po1[0] = -55+(70-45)*(t-sttMark1)/20;
+                wea_po1[1] = -5+(10+5)*(t-sttMark1)/20;
+            }
+            else if (turnMark1_+30>t) {
+                if (turnMark1_+20>t) {
+                    wea_po1[0] = 5-50*(t-turnMark1_)/20;
+                    wea_po1[1] = 10-30*(t-turnMark1_)/20;
+                    wea1.style.transform = "rotate("+String(180-120*(t-turnMark1_)/20)+"deg)";
+                }
+                else {
+                    wea_po1[0] = -45+70*(t-turnMark1_-20)/10;
+                    wea_po1[1] = 10+20*(t-turnMark1_-20)/10;
+                    wea1.style.transform = "rotate("+String(60+150*(t-turnMark1_-20)/10)+"deg)";
+                    wea1.style.width = String(80+30*(t-turnMark1_-20)/10)+"px";
+                    if((pl1.offsetLeft+90>=pl2.offsetLeft && pl2.offsetLeft>=pl1.offsetLeft) && (pl1.offsetTop-40<=pl2.offsetTop && pl2.offsetTop<=pl1.offsetTop+60)) {
+                        if (defenMark2+30>t && dire2 == "L") {
+                            speed1[0] = -8;
+                            blood1 -= 2;
+                        }
+                        else {
+                            speed2[0] = 14;
+                            blood2 -= 8;
+                        }
+                    }
+                }
+            }
+            else if (sttMark1+30>t) {
+                if (sttMark1+20>t) {
+                    wea_po1[0] = -2-30*(t-sttMark1)/20;
+                    wea1.style.transform = "rotate("+String(160+30*(t-sttMark1)/20)+"deg)";
+                }
+                else {
+                    wea_po1[0] = -32+70*(t-sttMark1-20)/10;
+                    wea1.style.transform = "rotate(0deg)";
+                    if ((pl1.offsetLeft+70>=pl2.offsetLeft && pl2.offsetLeft>=pl1.offsetLeft) && (pl1.offsetTop-40<=pl2.offsetTop && pl2.offsetTop<=pl1.offsetTop+60)) {
+                        if (defenMark2+30>t && dire2 == "L") {
+                            speed1[0] = -8;
+                            blood1 -= 2;
+                        }
+                        else {
+                            speed2[0] = 14;
+                            blood2 -= 5;
+                        }
+                    }
+                }
+            }
+            else if (defenMark1+30>t) {
+                wea1.style.transform = "rotate(85deg)";
+                wea_po1[0] = -3;
+            }
+        }
+    }, 10)
+
+    timer = setInterval(function () {
+        var l = pl1.offsetLeft;
+        var t = pl1.offsetTop;
+        if (l + speed1[0]>=350 && l + speed1[0]<=1050) { pl1.style.left = l + speed1[0] + 'px'; }
+        if (t + speed1[1]<=500) { pl1.style.top = t + speed1[1] + 'px'; }
+        else { jumpNum1 = 0; pl1.style.top = 500 + 'px'; }
+        if (throwMark1==true) {
+            wea1.style.left = throwplace1[0] + throwweapo1 + 'px';
+            wea1.style.top = throwplace1[1] + wea_po1[1] + 'px';
+        }
+        else {
+            wea1.style.left = pl1.offsetLeft + wea_po1[0] + 'px';
+            wea1.style.top = pl1.offsetTop + wea_po1[1] + 'px';
+        }
+        bloodsub1.style.width = 340 * blood1 / 1000 + 'px';
+    }, 10)
+
+
+
+    timer = setInterval(function () {
+        if (speed2[0]>0 && t%2==0) { speed2[0] -= 4; }
+        if (speed2[0]<0 && t%2==0) { speed2[0] += 4; }
+        if (speed2[0]>-4 && speed2[0]<4) { speed2[0] = 0; }
+        if (speed2[1]<10 && t%3==0) { speed2[1] += 2; }
+
+        if (keys[65] && speed2[0]>=-6) {
+            if (dire2=="R") { turnMark2 = t; }
+            speed2[0] -= 4;dire2 = "L";
+        }
+        if (keys[87] && jumpNum2<2 && jumpMark2+30<=t && jumpFlag2==true) { speed2[1] = -16;jumpNum2 += 1;jumpMark2 = t;jumpFlag2 = false; }
+        if (keys[68] && speed2[0]<=6) {
+            if (dire2=="L") { turnMark2 = t; }
+            speed2[0] += 4;dire2 = "R";
+        }
+        if (keys[83] && speed2[1]<=8) { speed2[1] += 2; }
+        if (keys[78] && defenMark2+50<=t && defenFlag2==true) { defenMark2 = t;defenFlag2 = false; }
+        if (keys[72] && diMark2+200<=t) {
+            diMark2 = t;
+            diFlag2 = false;
+            displace2.style.display = "block";
+            displace2.style.left = pl2.offsetLeft + 'px';
+            displace2.style.top = pl2.offsetTop + 'px';
+        }
+        if (keys[74] && diMark2+70<=t && diFlag2==false) {
+            diMark2 = t;
+            diFlag2 = true;
+            pl2.style.left = displace2.offsetLeft + 'px';
+            pl2.style.top = displace2.offsetTop + 'px';
+            speed2[0] = 0;
+            speed2[1] = 0;
+            displace2.style.display = "none";
+        }
+        if (diFlag2==false) { displace2.style.opacity = (t-diMark2)/70; }
+        if (keys[77] && runFlag2==true && runMark2+70<=t) {
+            runFlag2 = false;
+            runMark2 = t;
+            if (dire2 == "L") {
+                pl2.style.transform = "rotate(160deg)";
+                speed2[0] = -26;
+            }
+            else {
+                pl2.style.transform = "rotate(20deg)";
+                speed2[0] = 26;
+            }
+        }
+        else if(runMark2+50==t) {
+            pl2.style.transform = "rotate(0deg)";
+        }
+        if (keys[66] && sttFlag2==true && sttMark2+30<=t) {
+            sttFlag2 = false;
+            sttMark2 = t;
+        }
+
+        if (dire2 == "L") {
+            wea_po2[0] = -30;
+            wea_po2[1] = 10;
+            wea2.style.transform = "rotate(10deg)";
+            wea2.style.width = "80px";
+
+            if (sttMark2+30>t && turnMark2+30>t && turnMark2_+30<=t) { turnMark2_ = t; }
+            if (keys[83] && sttMark2+30>t && throwMark2==false) {
+                throwMark2 = true;
+                throwplace2[0] = pl2.offsetLeft;
+                throwplace2[1] = pl2.offsetTop;
+                throwstep2 = -8;
+                throwweapo2 = -38;
+            }
+
+            if (throwMark2==true) {
+                throwweapo2 += throwstep2;
+                wea2.style.transform = "rotate("+String(t*10%180)+"deg)";
+                if (throwplace2[0]+throwweapo2<=300 || throwplace2[0]+throwweapo2>=1050) { throwstep2 = -throwstep2; }
+                if (throwweapo2==-30) { throwMark2 = false; }
+                if(throwstep2<0 && ((throwplace2[0]+throwweapo2-70<=pl1.offsetLeft && pl1.offsetLeft<=throwplace2[0]+throwweapo2) && (throwplace2[1]-40<=pl1.offsetTop && pl1.offsetTop<=throwplace2[1]+60))) {
+                    if (defenMark1+30<=t || dire1 == "L") {
+                        speed1[0] = -7;
+                        speed1[1] = -2;
+                        blood1 -= 4;
+                    }
+                    else {
+                        throwstep2 = -throwstep2;
+                    }
+                }
+                else if(throwstep2>0 && ((throwplace2[0]+throwweapo2+70>=pl1.offsetLeft && pl1.offsetLeft>=throwplace2[0]+throwweapo2) && (throwplace2[1]-40<=pl1.offsetTop && pl1.offsetTop<=throwplace2[1]+60))) {
+                    if (defenMark1+30<=t || dire1 == "R") {
+                        speed1[0] = 7;
+                        speed1[1] = -2;
+                        blood1 -= 4;
+                    }
+                    else {
+                        throwstep2 = -throwstep2;
+                    }
+                }
+            }
+            else if (sttMark2+30>t && runMark2+50>t) {
+                if((pl2.offsetLeft-70<=pl1.offsetLeft && pl1.offsetLeft<=pl2.offsetLeft) && (pl2.offsetTop-40<=pl1.offsetTop && pl1.offsetTop<=pl2.offsetTop+60)) {
+                    if (defenMark1+30>t && dire1 == "R") {
+                        speed2[0] = 8;
+                        blood2 -= 2;
+                    }
+                    else {
+                        speed1[0] = -14;
+                        speed1[1] = -4;
+                        blood1 -= 5;
+                    }
+                }
+                wea2.style.transform = "rotate("+String(175+(175+20)*(t-sttMark2)/15)+"deg)";
+                wea2.style.width = String(80+(120-80)*(t-sttMark2)/20)+"px";
+                wea_po2[0] = -5+(-70+5)*(t-sttMark2)/20;
+                wea_po2[1] = -5+(10+5)*(t-sttMark2)/20;
+            }
+            else if (turnMark2_+30>t) {
+                if (turnMark2_+20>t) {
+                    wea_po2[0] = -45+50*(t-turnMark2_)/20;
+                    wea_po2[1] = 10-30*(t-turnMark2_)/20;
+                    wea2.style.transform = "rotate("+String(20+120*(t-turnMark2_)/20)+"deg)";
+                }
+                else {
+                    wea_po2[0] = -15-70*(t-turnMark2_-20)/10;
+                    wea_po2[1] = 10+20*(t-turnMark2_-20)/10;
+                    wea2.style.transform = "rotate("+String(40-50*(t-turnMark2_-20)/10)+"deg)";
+                    wea2.style.width = String(80+30*(t-turnMark2_-20)/10)+"px";
+                    if((pl2.offsetLeft-90<=pl1.offsetLeft && pl1.offsetLeft<=pl1.offsetLeft) && (pl2.offsetTop-40<=pl1.offsetTop && pl1.offsetTop<=pl2.offsetTop+60)) {
+                        if (defenMark1+30>t && dire1 == "R") {
+                            speed2[0] = 8;
+                            blood2 -= 2;
+                        }
+                        else {
+                            speed1[0] = -14;
+                            blood1 -= 8;
+                        }
+                    }
+                }
+            }
+            else if (sttMark2+30>t) {
+                if (sttMark2+20>t) {
+                    wea_po2[0] = -45+30*(t-sttMark2)/20;
+                    wea2.style.transform = "rotate("+String(20-30*(t-sttMark2)/20)+"deg)";
+                }
+                else {
+                    wea_po2[0] = -15-70*(t-sttMark2-20)/10;
+                    wea2.style.transform = "rotate(0deg)";
+                    if((pl2.offsetLeft-70<=pl1.offsetLeft && pl1.offsetLeft<=pl2.offsetLeft) && (pl2.offsetTop-40<=pl1.offsetTop && pl1.offsetTop<=pl2.offsetTop+60)) {
+                        if (defenMark1+30>t && dire1 == "R") {
+                            speed2[0] = 8;
+                            blood2 -= 2;
+                        }
+                        else {
+                            speed1[0] = -14;
+                            blood1 -= 5;
+                        }
+                    }
+                }
+            }
+            else if (defenMark2+30>t) {
+                wea2.style.transform = "rotate(95deg)";
+                wea_po2[0] = -45;
+            }
+
+        }
+        else if (dire2 == "R") {
+            wea_po2[0] = -17;
+            wea_po2[1] = 10;
+            wea2.style.transform = "rotate(170deg)";
+            wea2.style.width = "80px";
+
+            if (sttMark2+30>t && turnMark2+30>t && turnMark2_+30<=t) { turnMark2_ = t; }
+            if (keys[83] && sttMark2+30>t && throwMark2==false) {
+                throwMark2 = true;
+                throwplace2[0] = pl2.offsetLeft;
+                throwplace2[1] = pl2.offsetTop;
+                throwstep2 = 8;
+                throwweapo2 = -22;
+            }
+
+            if (throwMark2==true) {
+                throwweapo2 += throwstep2;
+                wea2.style.transform = "rotate("+String(t*10%180)+"deg)";
+                if (throwplace2[0]+throwweapo2<=300 || throwplace2[0]+throwweapo2>=1050) { throwstep2 = -throwstep2; }
+                if (throwweapo2==-30) { throwMark2 = false; }
+                if(throwstep2<0 && ((throwplace2[0]+throwweapo2-70<=pl1.offsetLeft && pl1.offsetLeft<=throwplace2[0]+throwweapo2) && (throwplace2[1]-40<=pl1.offsetTop && pl1.offsetTop<=throwplace2[1]+60))) {
+                    if (defenMark1+30<=t || dire1 == "L") {
+                        speed1[0] = -7;
+                        speed1[1] = -2;
+                        blood1 -= 4;
+                    }
+                    else {
+                        throwstep2 = -throwstep2;
+                    }
+                }
+                else if(throwstep2>0 && ((throwplace2[0]+throwweapo2+70>=pl1.offsetLeft && pl1.offsetLeft>=throwplace2[0]+throwweapo2) && (throwplace2[1]-40<=pl1.offsetTop && pl1.offsetTop<=throwplace2[1]+60))) {
+                    if (defenMark1+30<=t || dire1 == "R") {
+                        speed1[0] = 7;
+                        speed1[1] = -2;
+                        blood1 -= 4;
+                    }
+                    else {
+                        throwstep2 = -throwstep2;
+                    }
+                }
+            }
+            else if (sttMark2+30>t && runMark2+50>t) {
+                if((pl2.offsetLeft+70>=pl1.offsetLeft && pl1.offsetLeft>=pl2.offsetLeft) && (pl2.offsetTop-40<=pl1.offsetTop && pl1.offsetTop<=pl2.offsetTop+60)) {
+                    if (defenMark1+30>t && dire1 == "L") {
+                        speed2[0] = -8;
+                        blood2 -= 2;
+                    }
+                    else {
+                        speed1[0] = 14;
+                        speed1[1] = -4;
+                        blood1 -= 5;
+                    }
+                }
+                wea2.style.transform = "rotate("+String(15-(175+20)*(t-sttMark2)/15)+"deg)";
+                wea2.style.width = String(80+(120-80)*(t-sttMark2)/20)+"px";
+                wea_po2[0] = -55+(70-45)*(t-sttMark2)/20;
+                wea_po2[1] = -5+(10+5)*(t-sttMark2)/20;
+            }
+            else if (turnMark2_+30>t) {
+                if (turnMark2_+20>t) {
+                    wea_po2[0] = 5-50*(t-turnMark2_)/20;
+                    wea_po2[1] = 10-30*(t-turnMark2_)/20;
+                    wea2.style.transform = "rotate("+String(180-120*(t-turnMark2_)/20)+"deg)";
+                }
+                else {
+                    wea_po2[0] = -45+70*(t-turnMark2_-20)/10;
+                    wea_po2[1] = 10+20*(t-turnMark2_-20)/10;
+                    wea2.style.transform = "rotate("+String(60+150*(t-turnMark2_-20)/10)+"deg)";
+                    wea2.style.width = String(80+30*(t-turnMark2_-20)/10)+"px";
+                    if((pl2.offsetLeft+90>=pl1.offsetLeft && pl1.offsetLeft>=pl2.offsetLeft) && (pl2.offsetTop-40<=pl1.offsetTop && pl1.offsetTop<=pl2.offsetTop+60)) {
+                        if (defenMark1+30>t && dire1 == "L") {
+                            speed2[0] = -8;
+                            blood2 -= 2;
+                        }
+                        else {
+                            speed1[0] = 14;
+                            blood1 -= 8;
+                        }
+                    }
+                }
+            }
+            else if (sttMark2+30>t) {
+                if (sttMark2+20>t) {
+                    wea_po2[0] = -2-30*(t-sttMark2)/20;
+                    wea2.style.transform = "rotate("+String(160+30*(t-sttMark2)/20)+"deg)";
+                }
+                else {
+                    wea_po2[0] = -32+70*(t-sttMark2-20)/10;
+                    wea2.style.transform = "rotate(0deg)";
+                    if ((pl2.offsetLeft+70>=pl1.offsetLeft && pl1.offsetLeft>=pl2.offsetLeft) && (pl2.offsetTop-40<=pl1.offsetTop && pl1.offsetTop<=pl2.offsetTop+60)) {
+                        if (defenMark1+30>t && dire1 == "L") {
+                            speed2[0] = -8;
+                            blood2 -= 2;
+                        }
+                        else {
+                            speed1[0] = 14;
+                            blood1 -= 5;
+                        }
+                    }
+                }
+            }
+            else if (defenMark2+30>t) {
+                wea2.style.transform = "rotate(85deg)";
+                wea_po2[0] = -3;
+            }
+        }
+    }, 10)
+
+    timer = setInterval(function () {
+        var l = pl2.offsetLeft;
+        var t = pl2.offsetTop;
+        if (l + speed2[0]>=350 && l + speed2[0]<=1050) { pl2.style.left = l + speed2[0] + 'px'; }
+        if (t + speed2[1]<=500) { pl2.style.top = t + speed2[1] + 'px'; }
+        else { jumpNum2 = 0; pl2.style.top = 500 + 'px'; }
+        if (throwMark2==true) {
+            wea2.style.left = throwplace2[0] + throwweapo2 + 'px';
+            wea2.style.top = throwplace2[1] + wea_po2[1] + 'px';
+        }
+        else {
+            wea2.style.left = pl2.offsetLeft + wea_po2[0] + 'px';
+            wea2.style.top = pl2.offsetTop + wea_po2[1] + 'px';
+        }
+        bloodsub2.style.width = 340 * blood2 / 1000 + 'px';
+    }, 10)
+
+
+
+    timer = setInterval(function () {
+         t++;
+    }, 10)
+</script>
+</body>
+</html>
